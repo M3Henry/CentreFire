@@ -10,17 +10,17 @@ public:
 		std::string Str;
 		if (!Nameables.empty()) {
 
-			int i = 0;
+			size_t i = 0;
+			//auto It = Nameables.begin();
 			//capture first element
-			Str = Nameables[i++];
-
+			Str = Nameables[i++]->name();
 			//capture middle elements, if any
-			while (i < Nameables.Size()-2){
+			while (i < Nameables.size()-1){
 				Str += ", " + Nameables[i++]->name();
 			}
 			//capture last element, if different to first
-			if (Nameables.Size() > 1){
-				Str += " and " +Nameables[i];
+			if (Nameables.size() > 1){
+				Str += " and " + Nameables[i]->name();
 			}
 		}
 		return Str;
