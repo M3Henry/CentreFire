@@ -95,8 +95,6 @@
     <ClInclude Include="primer.h" />
     <ClInclude Include="primer_type.h" />
     <ClInclude Include="propellant_type.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="targetver.h" />
     <ClInclude Include="unsigned_float.h" />
   </ItemGroup>
   <ItemGroup>
@@ -115,7 +113,6 @@
     <ClCompile Include="primer.cpp" />
     <ClCompile Include="primer_type.cpp" />
     <ClCompile Include="propellant_type.cpp" />
-    <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

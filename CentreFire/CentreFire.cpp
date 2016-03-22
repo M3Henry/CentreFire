@@ -1,7 +1,7 @@
 // CentreFire.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
+#include <tchar.h>
 #include "ammo_factory.h"
 #include "break_rifle.h"
 #include <Windows.h>
