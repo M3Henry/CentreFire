@@ -3,7 +3,6 @@
 #include <memory>
 
 class primer :
-	
 	public nameable {
 public:
 	explicit primer(const primer_type &, bool New = true);
