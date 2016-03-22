@@ -69,6 +69,9 @@
     <ClInclude Include="gun.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="receiver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CentreFire.cpp">

@@ -95,6 +95,7 @@
     <ClInclude Include="primer.h" />
     <ClInclude Include="primer_type.h" />
     <ClInclude Include="propellant_type.h" />
+    <ClInclude Include="receiver.h" />
     <ClInclude Include="unsigned_float.h" />
   </ItemGroup>
   <ItemGroup>
