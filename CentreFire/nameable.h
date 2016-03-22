@@ -9,19 +9,20 @@ public:
 	static std::string englishList(std::vector<const nameable *> Nameables) {
 		std::string Str;
 		if (!Nameables.empty()) {
-
-			size_t i = 0;
-			//auto It = Nameables.begin();
+			auto Begin = Nameables.begin();
+			auto End = Nameables.end();
+			auto It = Begin;
 			//capture first element
-			Str = Nameables[i++]->name();
+			Str = (*It++)->name();
 			//capture middle elements, if any
-			while (i < Nameables.size()-1){
-				Str += ", " + Nameables[i++]->name();
+			while (distance(It, End) > 1) {
+				Str += ", " + (*It++)->name();
 			}
 			//capture last element, if different to first
-			if (Nameables.size() > 1){
-				Str += " and " + Nameables[i]->name();
+			if (Begin != It && It != End) {
+				Str += " and " + (*It)->name();
 			}
+			
 		}
 		return Str;
 	}
