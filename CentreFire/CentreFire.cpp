@@ -23,12 +23,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 		break_rifle Rifle(Chamber, Barrel);
 		cout << "Successfully created " << Barrel.name() << " to fire them from." << endl << endl;
 
-		for (;;) {
-			auto Cartridge = Ammo->extract();
-			if (!Cartridge) {
-				cout << "Left with " << Ammo->name() << endl << endl;
-				break;
-			}
+		while (auto Cartridge = Ammo->extract()) {
 			cout << "Removed " << Cartridge->name() << " from ammo box." << endl;
 			Rifle.open();
 			Rifle.load(move(Cartridge));
@@ -39,9 +34,12 @@ int _tmain(int argc, _TCHAR* argv[]) {
 
 			cout << Cartridge->name() << " now comprises of:" << endl << Cartridge->contents() << "." << endl << endl;
 		}
+		cout << "Left with " << Ammo->name() << endl << endl;
 	} catch (string Error) {
 		cout << "ERROR: " << Error << endl << endl;
+		system("pause");
+		exit(EXIT_FAILURE);
 	}
 	system("pause");
-	return 0;
+	exit(EXIT_SUCCESS);
 }

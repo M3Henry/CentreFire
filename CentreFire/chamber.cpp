@@ -19,11 +19,11 @@ std::string chamber::name() const {
 }
 
 
-std::tuple<const bullet_type *, float> chamber::strike(float Impulse) {
+ejecta chamber::strike(float Impulse) {
 	if (loaded()) {
 		return _Cartridge->strike(Impulse);
 	} else {
-		return std::tuple<const bullet_type *, float>(nullptr, 0.0f);
+		return ejecta(nullptr, 0.0f);
 	}
 }
 bool chamber::load(std::unique_ptr<cartridge> Cartridge) {

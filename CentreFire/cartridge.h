@@ -5,6 +5,8 @@
 #include <tuple>
 #include <memory>
 
+typedef std::tuple<const bullet_type *, float> ejecta;
+
 class cartridge :
 	public named {
 public:		//	Memory
@@ -25,11 +27,11 @@ public:		//	Methods
 	operator const case_type &() const;
 	operator const calibre &() const;
 public:		//	Modifiers
-	bool insertBullet(const bullet_type * &);
+	bool insert(const bullet_type * &);
 	const bullet_type * releaseBullet();
-	bool insertPrimer(std::unique_ptr<primer> &);
+	bool insert(std::unique_ptr<primer> &);
 	std::unique_ptr<primer> releasePrimer();
-	std::tuple<const bullet_type *, float> strike(float = 0.0f);
+	ejecta strike(float = 0.0f);
 private:	//	Helpers
 private:	//	Members
 	const case_type & _Case;

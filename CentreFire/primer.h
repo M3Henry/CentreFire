@@ -11,7 +11,6 @@ public:
 	primer & operator= (const primer &) = delete;
 public:
 	std::unique_ptr<primer> clone() const;
-	const primer_type & type() const;
 	std::string name() const;
 	operator const primer_type&() const;
 public:

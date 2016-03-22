@@ -9,10 +9,6 @@ std::unique_ptr<primer> primer::clone() const {
 	return std::unique_ptr<primer>(new primer(_Type, _New));
 }
 
-const primer_type & primer::type() const {
-	return _Type;
-}
-
 bool primer::strike(float Impulse) {
 	auto Bang = _New && _Type.strike(Impulse);
 	if (Bang) {

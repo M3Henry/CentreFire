@@ -16,7 +16,7 @@ named(Name) {
 		}
 	}
 	if (hasPrimer()) {
-		if (!_Case.accepts(_Primer->type())) {
+		if (!_Case.accepts(*_Primer)) {
 			throw(_Case.name() + " cannot be accept a " + _Primer->name() + " primer!");
 		}
 	}
@@ -49,7 +49,7 @@ cartridge::operator const calibre &() const {
 }
 
 
-bool cartridge::insertBullet(const bullet_type * & Bullet) {
+bool cartridge::insert(const bullet_type * & Bullet) {
 	if (!hasBullet()) {
 		if (_Case.accepts(*Bullet)) {
 			_Bullet = Bullet;
@@ -66,9 +66,9 @@ const bullet_type * cartridge::releaseBullet() {
 	return Bullet;
 }
 
-bool cartridge::insertPrimer(std::unique_ptr<primer> & Primer) {
+bool cartridge::insert(std::unique_ptr<primer> & Primer) {
 	if (!hasPrimer()) {
-		if (_Case.accepts(Primer->type())) {
+		if (_Case.accepts(*Primer)) {
 			_Primer = std::move(Primer);
 			return true;
 		}
@@ -79,19 +79,19 @@ std::unique_ptr<primer> cartridge::releasePrimer() {
 	return std::move(_Primer);
 }
 
-std::tuple<const bullet_type *, float> cartridge::strike(float Impulse) {
+ejecta cartridge::strike(float Impulse) {
 	auto Energy = 0.0f;
 	const bullet_type * Bullet = nullptr;
 	if (_Primer->strike(Impulse)) {
 		if (hasPropellant()) {
 			Energy = _Case.volume() * _Propellant->energyDensity();
+			_Propellant = nullptr;
 			if (Energy > 0.0f) {
-				_Propellant = nullptr;
 				Bullet = releaseBullet();
 			}
 		}
 	}
-	return std::tuple<const bullet_type *, float>(Bullet, Energy);
+	return ejecta(Bullet, Energy);
 }
 
 std::string cartridge::contents() const {
