@@ -8,6 +8,7 @@
 #include "gun.h"
 #include "break_action.h"
 #include "bolt_action.h"
+#include "garand_action.h"
 
 int _tmain(int argc, _TCHAR* argv[]) {
 	using namespace std;
@@ -22,13 +23,17 @@ int _tmain(int argc, _TCHAR* argv[]) {
 
 		barrel_type Barrel(*Ammo, 300.0f, "Rifle Barrel");
 		break_action BreakerTemplate(*Ammo);
-		gun Rifle(BreakerTemplate, Barrel, "Sporter");
+		//gun Rifle(BreakerTemplate, Barrel, "Sporter");
 		magazine_type BoxMag(*Ammo, 5);
 		bolt_action BolterTemplate(BoxMag);
 		//gun Rifle(BolterTemplate, Barrel, "Karabiner 98 kurz");
+		garand_action GarandTemplate(BoxMag);
+		gun Rifle(GarandTemplate, Barrel, "M1 Garand");
 		cout << "Successfully created " << Rifle.name() << " to fire them from." << endl << endl;
 		if (auto Bolter = Rifle.action<bolt_action>()) {
 			Bolter->open();
+		} else if (auto Garand = Rifle.action<garand_action>()) {
+			Garand->open();
 		}
 		while (auto Cartridge = Ammo->extract()) {
 			cout << "Removed " << Cartridge->name() << " from ammo box." << endl;
@@ -47,8 +52,13 @@ int _tmain(int argc, _TCHAR* argv[]) {
 				if (Cartridge) {
 					cout << "I still have a " << Cartridge->name() << " in-hand?" << endl;
 				}
+			} else if (auto Garand = Rifle.action<garand_action>()) {
+				Cartridge = Garand->load(move(Cartridge));
+				if (Cartridge) {
+					cout << "I still have a " << Cartridge->name() << " in-hand?" << endl;
+				}
 			} else {
-				cout << "I don't know what to do with non break-action!" << endl;
+				cout << "I don't know how to load " << Rifle.name() << "!" << endl;
 				break;
 			}
 		}
@@ -58,6 +68,11 @@ int _tmain(int argc, _TCHAR* argv[]) {
 				Bolter->close();
 				Rifle.fire();
 				Bolter->open();
+			}
+			cout << endl;
+		} else if (auto Garand = Rifle.action<garand_action>()) {
+			for (unsigned int I = 0; I < 8; ++I) {
+				Rifle.fire();
 			}
 			cout << endl;
 		}

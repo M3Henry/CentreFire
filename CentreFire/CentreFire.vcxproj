@@ -89,6 +89,7 @@
     <ClInclude Include="cartridge.h" />
     <ClInclude Include="case_type.h" />
     <ClInclude Include="chamber.h" />
+    <ClInclude Include="garand_action.h" />
     <ClInclude Include="gun.h" />
     <ClInclude Include="loadable.h" />
     <ClInclude Include="magazine.h" />
@@ -100,6 +101,7 @@
     <ClInclude Include="propellant_type.h" />
     <ClInclude Include="receiver.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="resource1.h" />
     <ClInclude Include="unsigned_float.h" />
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +116,7 @@
     <ClCompile Include="case_type.cpp" />
     <ClCompile Include="CentreFire.cpp" />
     <ClCompile Include="chamber.cpp" />
+    <ClCompile Include="garand_action.cpp" />
     <ClCompile Include="gun.cpp" />
     <ClCompile Include="magazine.cpp" />
     <ClCompile Include="magazine_type.cpp" />
@@ -123,10 +126,10 @@
     <ClCompile Include="propellant_type.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="CentreFire.rc" />
+    <ResourceCompile Include="CentreFire1.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="icon1.ico" />
+    <Image Include="cannon-shell.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

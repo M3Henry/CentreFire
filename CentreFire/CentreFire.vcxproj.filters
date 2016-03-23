@@ -84,6 +84,12 @@
     <ClInclude Include="loadable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="garand_action.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CentreFire.cpp">
@@ -140,14 +146,17 @@
     <ClCompile Include="bolt_action.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="garand_action.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="CentreFire.rc">
+    <ResourceCompile Include="CentreFire1.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="icon1.ico">
+    <Image Include="cannon-shell.ico">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

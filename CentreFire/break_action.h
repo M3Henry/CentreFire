@@ -6,8 +6,6 @@ class break_action :
 public:
 	break_action(const case_type &);
 	std::unique_ptr<receiver> clone() const;
-private:
-	const cartridge * top() const;
 public:
 	void open();
 	void close();
@@ -21,4 +19,3 @@ private:
 	bool _Cocked;
 	bool _Open;
 };
-
