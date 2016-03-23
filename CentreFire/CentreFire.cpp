@@ -28,8 +28,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 		while (auto Cartridge = Ammo->extract()) {
 			cout << "Removed " << Cartridge->name() << " from ammo box." << endl;
 			receiver & Receiver = Rifle;
-			if (Receiver.cast<break_action>()) {
-				auto Action = Receiver.cast<break_action>();
+			if (auto Action = Receiver.cast<break_action>()) {
 				Action->open();
 				Action->load(move(Cartridge));
 				Action->close();
