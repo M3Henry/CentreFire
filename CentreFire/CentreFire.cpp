@@ -28,14 +28,14 @@ int _tmain(int argc, _TCHAR* argv[]) {
 		while (auto Cartridge = Ammo->extract()) {
 			cout << "Removed " << Cartridge->name() << " from ammo box." << endl;
 			receiver & Receiver = Rifle;
-			if (typeid(break_action) == Receiver) {
-				break_action & Action = static_cast<break_action &>(Receiver);
-				Action.open();
-				Action.load(move(Cartridge));
-				Action.close();
-				Action.cock();
+			if (Receiver.cast<break_action>()) {
+				auto Action = Receiver.cast<break_action>();
+				Action->open();
+				Action->load(move(Cartridge));
+				Action->close();
+				Action->cock();
 				Rifle.fire();
-				Cartridge = Action.open();
+				Cartridge = Action->open();
 			} else {
 				cout << "Don't know what to do with non break-action" << endl;
 			}

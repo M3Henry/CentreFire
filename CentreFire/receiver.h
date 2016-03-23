@@ -4,12 +4,18 @@
 class receiver : nameable {
 public:
 	virtual std::unique_ptr<receiver> clone() const = 0;
-	operator const type_info &() const {
-		return typeid(*this);
-	}
 
 	std::string name() const {
 		return typeid(*this).name();
+	}
+public:
+	template <class A>
+	A * cast() {
+		if (typeid(A) == typeid(*this)) {
+			return static_cast<A *>(this);
+		} else {
+			return nullptr;
+		}
 	}
 private:
 	friend class gun;
