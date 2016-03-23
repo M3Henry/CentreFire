@@ -10,7 +10,7 @@ bool chamber::loaded() const {
 	return (bool)_Cartridge;
 }
 
-chamber::operator const case_type &() const {
+chamber::operator const chamber_type &() const {
 	return _Type;
 }
 

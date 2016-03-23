@@ -8,7 +8,7 @@ public:
 	chamber(const chamber_type &);
 public:
 	bool loaded() const;
-	operator const case_type &() const;
+	operator const chamber_type &() const;
 	std::string name() const;
 public:
 	bool load(std::unique_ptr<cartridge>);

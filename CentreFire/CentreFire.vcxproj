@@ -82,7 +82,7 @@
     <ClInclude Include="ammo_box.h" />
     <ClInclude Include="ammo_factory.h" />
     <ClInclude Include="barrel_type.h" />
-    <ClInclude Include="break_rifle.h" />
+    <ClInclude Include="break_action.h" />
     <ClInclude Include="bullet_type.h" />
     <ClInclude Include="calibre.h" />
     <ClInclude Include="cartridge.h" />
@@ -102,7 +102,7 @@
     <ClCompile Include="ammo_box.cpp" />
     <ClCompile Include="ammo_factory.cpp" />
     <ClCompile Include="barrel_type.cpp" />
-    <ClCompile Include="break_rifle.cpp" />
+    <ClCompile Include="break_action.cpp" />
     <ClCompile Include="bullet_type.cpp" />
     <ClCompile Include="calibre.cpp" />
     <ClCompile Include="cartridge.cpp" />
@@ -110,6 +110,7 @@
     <ClCompile Include="CentreFire.cpp" />
     <ClCompile Include="chamber.cpp" />
     <ClCompile Include="chamber_type.cpp" />
+    <ClCompile Include="gun.cpp" />
     <ClCompile Include="named.cpp" />
     <ClCompile Include="primer.cpp" />
     <ClCompile Include="primer_type.cpp" />

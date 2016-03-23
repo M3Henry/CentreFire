@@ -63,13 +63,13 @@
     <ClInclude Include="chamber_type.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="break_rifle.h">
+    <ClInclude Include="receiver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="break_action.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="gun.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="receiver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -116,7 +116,10 @@
     <ClCompile Include="chamber_type.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="break_rifle.cpp">
+    <ClCompile Include="break_action.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gun.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

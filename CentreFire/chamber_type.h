@@ -6,6 +6,7 @@ class chamber_type :
 public:
 	chamber_type(const case_type &, std::string);
 public:
+	bool accepts(const case_type &) const;
 	operator const case_type &() const;
 private:
 	const case_type & _Case;
