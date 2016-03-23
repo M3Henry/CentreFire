@@ -26,14 +26,14 @@ ejecta chamber::strike(float Impulse) {
 		return ejecta(nullptr, 0.0f);
 	}
 }
-bool chamber::load(std::unique_ptr<cartridge> Cartridge) {
+std::unique_ptr<cartridge> chamber::load(std::unique_ptr<cartridge> Cartridge) {
 	if (!loaded()) {
 		if (((const case_type &)_Type) == *Cartridge) {
 			_Cartridge = std::move(Cartridge);
-			return true;
+			return std::unique_ptr<cartridge>();
 		}
 	}
-	return false;
+	return Cartridge;
 }
 std::unique_ptr<cartridge> chamber::unload() {
 	return std::move(_Cartridge);

@@ -18,10 +18,8 @@ void break_action::close() {
 	_Open = false;
 }
 std::unique_ptr<cartridge> break_action::load(std::unique_ptr<cartridge> Cartridge) {
-	if (_Open && Cartridge) {
-		if (_Chamber.load(std::move(Cartridge))) {
-			return std::unique_ptr<cartridge>();
-		}
+	if (_Open) {
+		return _Chamber.load(std::move(Cartridge));
 	}
 	return Cartridge;
 }

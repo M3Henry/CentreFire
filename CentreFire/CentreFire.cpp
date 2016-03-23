@@ -37,10 +37,13 @@ int _tmain(int argc, _TCHAR* argv[]) {
 				Breaker->cock();
 				Rifle.fire();
 				Cartridge = Breaker->open();
+				if (Cartridge) {
+					cout << "Took a " << Cartridge->contents() << " from " << Rifle.name() << endl << endl;
+				}
 			} else {
-				cout << "Don't know what to do with non break-action" << endl;
+				cout << "I don't know what to do with non break-action!" << endl;
+				break;
 			}
-			cout << Cartridge->name() << " now comprises of:" << endl << Cartridge->contents() << "." << endl << endl;
 		}
 		cout << "Left with " << Ammo->name() << endl << endl;
 	} catch (string Error) {

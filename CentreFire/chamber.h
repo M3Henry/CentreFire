@@ -11,7 +11,7 @@ public:
 	operator const chamber_type &() const;
 	std::string name() const;
 public:
-	bool load(std::unique_ptr<cartridge>);
+	std::unique_ptr<cartridge> load(std::unique_ptr<cartridge>);
 	std::unique_ptr<cartridge> unload();
 	ejecta strike(float Impulse);
 private:
