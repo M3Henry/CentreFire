@@ -21,20 +21,22 @@ int _tmain(int argc, _TCHAR* argv[]) {
 
 		barrel_type Barrel(*Ammo, 300.0f, "Rifle Barrel");
 		chamber_type Chamber(*Ammo, "9x19mm Chamber");
-		break_action Breaker(Chamber);
-		gun Rifle(Breaker, Barrel, "Sporter");
+		break_action BreakerTemplate(Chamber);
+		gun Rifle(BreakerTemplate, Barrel, "Sporter");
 		cout << "Successfully created " << Rifle.name() << " to fire them from." << endl << endl;
 		
 		while (auto Cartridge = Ammo->extract()) {
 			cout << "Removed " << Cartridge->name() << " from ammo box." << endl;
-			receiver & Receiver = Rifle;
-			if (auto Action = Receiver.cast<break_action>()) {
-				Action->open();
-				Action->load(move(Cartridge));
-				Action->close();
-				Action->cock();
+			if (auto Breaker = Rifle.action<break_action>()) {
+				Breaker->open();
+				Cartridge = Breaker->load(move(Cartridge));
+				if (Cartridge) {
+					cout << "I still have a " << Cartridge->name() << " in-hand?" << endl;
+				}
+				Breaker->close();
+				Breaker->cock();
 				Rifle.fire();
-				Cartridge = Action->open();
+				Cartridge = Breaker->open();
 			} else {
 				cout << "Don't know what to do with non break-action" << endl;
 			}

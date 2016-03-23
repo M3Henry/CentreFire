@@ -8,15 +8,6 @@ public:
 	std::string name() const {
 		return typeid(*this).name();
 	}
-public:
-	template <class A>
-	A * cast() {
-		if (typeid(A) == typeid(*this)) {
-			return static_cast<A *>(this);
-		} else {
-			return nullptr;
-		}
-	}
 private:
 	friend class gun;
 	virtual ejecta fire() = 0;
