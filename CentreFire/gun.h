@@ -5,6 +5,8 @@ class gun :
 	public named {
 public:
 	gun(const receiver &, const barrel_type &, std::string);
+	gun(const gun &) = delete;
+	const gun & operator=(const gun &) = delete;
 public:
 	operator receiver &();
 	template <class A>

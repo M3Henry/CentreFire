@@ -1,8 +1,10 @@
 #pragma once
 #include "cartridge.h"
+#include "loadable.h"
 
 class chamber :
-	public nameable {
+	public nameable,
+	loadable<cartridge> {
 public:
 	chamber(const case_type &);
 public:

@@ -1,6 +1,5 @@
 #include "chamber.h"
 
-
 chamber::chamber(const case_type & Type) :
 _Type(Type) {
 }

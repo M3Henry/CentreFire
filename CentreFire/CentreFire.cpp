@@ -21,11 +21,11 @@ int _tmain(int argc, _TCHAR* argv[]) {
 		cout << endl << "Successfully created " << Ammo->name() << " cartridges comprising:" << endl << "  " << Ammo->contents().contents() << "." << endl;
 
 		barrel_type Barrel(*Ammo, 300.0f, "Rifle Barrel");
-		//break_action BreakerTemplate(*Ammo);
-		//gun Rifle(BreakerTemplate, Barrel, "Sporter");
+		break_action BreakerTemplate(*Ammo);
+		gun Rifle(BreakerTemplate, Barrel, "Sporter");
 		magazine_type BoxMag(*Ammo, 5);
 		bolt_action BolterTemplate(BoxMag);
-		gun Rifle(BolterTemplate, Barrel, "Karabiner 98 kurz");
+		//gun Rifle(BolterTemplate, Barrel, "Karabiner 98 kurz");
 		cout << "Successfully created " << Rifle.name() << " to fire them from." << endl << endl;
 		if (auto Bolter = Rifle.action<bolt_action>()) {
 			Bolter->open();
@@ -41,10 +41,7 @@ int _tmain(int argc, _TCHAR* argv[]) {
 				Breaker->close();
 				Breaker->cock();
 				Rifle.fire();
-				Cartridge = Breaker->open();
-				if (Cartridge) {
-					cout << "A " << Cartridge->contents() << " flew from " << Rifle.name() << endl;
-				}
+				Breaker->open();
 			} else if (auto Bolter = Rifle.action<bolt_action>()) {
 				Cartridge = Bolter->load(move(Cartridge));
 				if (Cartridge) {
@@ -55,17 +52,15 @@ int _tmain(int argc, _TCHAR* argv[]) {
 				break;
 			}
 		}
+		cout << endl << "Left with " << Ammo->name() << endl << endl;
 		if (auto Bolter = Rifle.action<bolt_action>()) {
 			for (unsigned int I = 0; I < 5; ++I) {
 				Bolter->close();
 				Rifle.fire();
-				auto Cartridge = Bolter->open();
-				if (Cartridge) {
-					cout << "A " << Cartridge->contents() << " flew from " << Rifle.name() << endl;
-				}
+				Bolter->open();
 			}
+			cout << endl;
 		}
-		cout << "Left with " << Ammo->name() << endl << endl;
 	} catch (string Error) {
 		cout << "ERROR: " << Error << endl << endl;
 		system("pause");

@@ -90,6 +90,7 @@
     <ClInclude Include="case_type.h" />
     <ClInclude Include="chamber.h" />
     <ClInclude Include="gun.h" />
+    <ClInclude Include="loadable.h" />
     <ClInclude Include="magazine.h" />
     <ClInclude Include="magazine_type.h" />
     <ClInclude Include="nameable.h" />
@@ -98,6 +99,7 @@
     <ClInclude Include="primer_type.h" />
     <ClInclude Include="propellant_type.h" />
     <ClInclude Include="receiver.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="unsigned_float.h" />
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +121,12 @@
     <ClCompile Include="primer.cpp" />
     <ClCompile Include="primer_type.cpp" />
     <ClCompile Include="propellant_type.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CentreFire.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

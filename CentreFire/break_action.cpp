@@ -10,9 +10,11 @@ std::unique_ptr<receiver> break_action::clone() const {
 	return std::unique_ptr<receiver>(p);
 }
 
-cartridge::instance break_action::open() {
+void break_action::open() {
 	_Open = true;
-	return unload();
+	if (auto Cartridge = unload()) {
+		std::cout << "A " << Cartridge->contents() << " flew out." << std::endl;
+	}
 }
 void break_action::close() {
 	_Open = false;
