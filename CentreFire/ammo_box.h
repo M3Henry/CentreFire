@@ -16,7 +16,7 @@ public:
 	operator const case_type &() const;
 public:
 	std::unique_ptr<ammo_box> clone();
-	std::unique_ptr<cartridge> extract();
+	cartridge::instance extract();
 private:
 	std::shared_ptr<cartridge> _Template;
 	unsigned int _Count;

@@ -11,7 +11,7 @@ barrel_type::operator const calibre &() const {
 	return _Calibre;
 }
 
-void barrel_type::fire(ejecta Ejecta) const {
+void barrel_type::fire(cartridge::ejecta Ejecta) const {
 	using namespace std;
 	auto Bullet = get<0>(Ejecta);
 	auto Energy = get<1>(Ejecta);

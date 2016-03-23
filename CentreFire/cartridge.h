@@ -5,10 +5,12 @@
 #include <tuple>
 #include <memory>
 
-typedef std::tuple<const bullet_type *, float> ejecta;
-
 class cartridge :
 	public named {
+public:		//	Typedefs
+	typedef std::tuple<const bullet_type *, float> ejecta;
+	static const ejecta NO_EJECTA;
+	typedef std::unique_ptr<cartridge> instance;
 public:		//	Memory
 	explicit cartridge(const case_type &,
 		const primer * = nullptr,
@@ -19,7 +21,7 @@ public:		//	Memory
 private:
 	cartridge(const cartridge &);
 public:		//	Methods
-	std::unique_ptr<cartridge> clone() const;
+	cartridge::instance clone() const;
 	bool hasBullet() const;
 	bool hasPropellant() const;
 	bool hasPrimer() const;

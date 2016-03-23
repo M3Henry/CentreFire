@@ -3,16 +3,16 @@
 class break_action :
 	public receiver {
 public:
-	break_action(const chamber_type &);
+	break_action(const case_type &);
 	std::unique_ptr<receiver> clone() const;
 public:
-	std::unique_ptr<cartridge> open();
+	cartridge::instance open();
 	void close();
-	std::unique_ptr<cartridge> load(std::unique_ptr<cartridge>);
-	std::unique_ptr<cartridge> unload();
+	cartridge::instance load(cartridge::instance);
+	cartridge::instance unload();
 	void cock();
 private:
-	ejecta fire();
+	cartridge::ejecta fire();
 private:
 	chamber _Chamber;
 	bool _Cocked;

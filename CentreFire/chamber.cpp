@@ -1,7 +1,7 @@
 #include "chamber.h"
 
 
-chamber::chamber(const chamber_type & Type) :
+chamber::chamber(const case_type & Type) :
 _Type(Type) {
 }
 
@@ -10,31 +10,33 @@ bool chamber::loaded() const {
 	return (bool)_Cartridge;
 }
 
-chamber::operator const chamber_type &() const {
+chamber::operator const case_type &() const {
 	return _Type;
 }
 
 std::string chamber::name() const {
-	return _Type.name();
+	return _Type.name() + " Chamber";
 }
 
 
-ejecta chamber::strike(float Impulse) {
+cartridge::ejecta chamber::strike(float Impulse) {
 	if (loaded()) {
 		return _Cartridge->strike(Impulse);
 	} else {
-		return ejecta(nullptr, 0.0f);
+		return cartridge::NO_EJECTA;
 	}
 }
-std::unique_ptr<cartridge> chamber::load(std::unique_ptr<cartridge> Cartridge) {
+cartridge::instance chamber::load(cartridge::instance Cartridge) {
 	if (!loaded()) {
-		if (((const case_type &)_Type) == *Cartridge) {
-			_Cartridge = std::move(Cartridge);
-			return std::unique_ptr<cartridge>();
+		if (Cartridge) {
+			if (((const case_type &)_Type) == *Cartridge) {
+				_Cartridge = std::move(Cartridge);
+				return cartridge::instance();
+			}
 		}
 	}
 	return Cartridge;
 }
-std::unique_ptr<cartridge> chamber::unload() {
+cartridge::instance chamber::unload() {
 	return std::move(_Cartridge);
 }

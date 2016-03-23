@@ -82,14 +82,16 @@
     <ClInclude Include="ammo_box.h" />
     <ClInclude Include="ammo_factory.h" />
     <ClInclude Include="barrel_type.h" />
+    <ClInclude Include="bolt_action.h" />
     <ClInclude Include="break_action.h" />
     <ClInclude Include="bullet_type.h" />
     <ClInclude Include="calibre.h" />
     <ClInclude Include="cartridge.h" />
     <ClInclude Include="case_type.h" />
     <ClInclude Include="chamber.h" />
-    <ClInclude Include="chamber_type.h" />
     <ClInclude Include="gun.h" />
+    <ClInclude Include="magazine.h" />
+    <ClInclude Include="magazine_type.h" />
     <ClInclude Include="nameable.h" />
     <ClInclude Include="named.h" />
     <ClInclude Include="primer.h" />
@@ -102,6 +104,7 @@
     <ClCompile Include="ammo_box.cpp" />
     <ClCompile Include="ammo_factory.cpp" />
     <ClCompile Include="barrel_type.cpp" />
+    <ClCompile Include="bolt_action.cpp" />
     <ClCompile Include="break_action.cpp" />
     <ClCompile Include="bullet_type.cpp" />
     <ClCompile Include="calibre.cpp" />
@@ -109,8 +112,9 @@
     <ClCompile Include="case_type.cpp" />
     <ClCompile Include="CentreFire.cpp" />
     <ClCompile Include="chamber.cpp" />
-    <ClCompile Include="chamber_type.cpp" />
     <ClCompile Include="gun.cpp" />
+    <ClCompile Include="magazine.cpp" />
+    <ClCompile Include="magazine_type.cpp" />
     <ClCompile Include="named.cpp" />
     <ClCompile Include="primer.cpp" />
     <ClCompile Include="primer_type.cpp" />

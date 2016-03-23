@@ -23,12 +23,12 @@ std::string ammo_box::name() const {
 	return Name;
 }
 
-std::unique_ptr<cartridge> ammo_box::extract() {
+cartridge::instance ammo_box::extract() {
 	if (!empty()) {
 		--_Count;
 		return _Template->clone();
 	} else {
-		return std::unique_ptr<cartridge>();
+		return cartridge::instance();
 	}
 }
 

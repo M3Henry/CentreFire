@@ -60,9 +60,6 @@
     <ClInclude Include="chamber.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="chamber_type.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="receiver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -70,6 +67,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="gun.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="magazine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="magazine_type.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bolt_action.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -113,13 +119,19 @@
     <ClCompile Include="chamber.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="chamber_type.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="break_action.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="gun.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="magazine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="magazine_type.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="bolt_action.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

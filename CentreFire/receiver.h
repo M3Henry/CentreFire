@@ -10,16 +10,5 @@ public:
 	}
 private:
 	friend class gun;
-	virtual ejecta fire() = 0;
+	virtual cartridge::ejecta fire() = 0;
 };
-/*
-class bolt_action : public receiver {
-public:
-	std::unique_ptr<receiver> clone() const {
-		return std::unique_ptr<receiver>(new bolt_action());
-	}
-	ejecta fire() {
-		return ejecta();
-	}
-};
-*/

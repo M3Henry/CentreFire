@@ -1,5 +1,7 @@
 #include "cartridge.h"
 
+const cartridge::ejecta cartridge::NO_EJECTA = cartridge::ejecta(nullptr, 0.0f);
+
 cartridge::cartridge(const case_type & Case,
 	const primer * Primer,
 	const propellant_type * Propellant,
@@ -30,8 +32,8 @@ _Bullet(Source._Bullet),
 named(Source.name() ) {
 }
 
-std::unique_ptr<cartridge> cartridge::clone() const {
-	return std::unique_ptr<cartridge>(new cartridge(*this));
+cartridge::instance cartridge::clone() const {
+	return cartridge::instance(new cartridge(*this));
 }
 
 bool cartridge::hasBullet() const {
@@ -79,7 +81,7 @@ std::unique_ptr<primer> cartridge::releasePrimer() {
 	return std::move(_Primer);
 }
 
-ejecta cartridge::strike(float Impulse) {
+cartridge::ejecta cartridge::strike(float Impulse) {
 	auto Energy = 0.0f;
 	const bullet_type * Bullet = nullptr;
 	if (_Primer->strike(Impulse)) {
