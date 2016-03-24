@@ -19,7 +19,7 @@ public:
 	}
 	void fire();
 private:
-	std::unique_ptr<receiver> _Receiver;
+	receiver::instance _Receiver;
 	const barrel_type & _Barrel;
 };
 

@@ -4,7 +4,6 @@ chamber::chamber(const case_type & Type) :
 _Type(Type) {
 }
 
-
 bool chamber::loaded() const {
 	return (bool)_Cartridge;
 }

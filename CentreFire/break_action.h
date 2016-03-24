@@ -5,7 +5,7 @@ class break_action :
 	public loadable<cartridge> {
 public:
 	break_action(const case_type &);
-	std::unique_ptr<receiver> clone() const;
+	instance clone() const;
 public:
 	void open();
 	void close();

@@ -5,9 +5,9 @@
 break_action::break_action(const case_type & Chamber) :
 _Chamber(Chamber), _Cocked(false), _Open(false) {
 }
-std::unique_ptr<receiver> break_action::clone() const {
+receiver::instance break_action::clone() const {
 	auto p = new break_action(_Chamber);
-	return std::unique_ptr<receiver>(p);
+	return instance(p);
 }
 
 void break_action::open() {

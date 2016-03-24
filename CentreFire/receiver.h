@@ -3,7 +3,9 @@
 
 class receiver : nameable {
 public:
-	virtual std::unique_ptr<receiver> clone() const = 0;
+	typedef std::unique_ptr<receiver> instance;
+public:
+	virtual instance clone() const = 0;
 
 	std::string name() const {
 		return typeid(*this).name();

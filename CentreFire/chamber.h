@@ -6,6 +6,8 @@ class chamber :
 	public nameable,
 	loadable<cartridge> {
 public:
+	typedef std::unique_ptr<chamber> instance;
+public:
 	chamber(const case_type &);
 public:
 	bool loaded() const;
@@ -19,4 +21,3 @@ private:
 	const case_type & _Type;
 	cartridge::instance _Cartridge;
 };
-

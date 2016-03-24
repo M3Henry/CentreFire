@@ -90,6 +90,9 @@
     <ClInclude Include="garand_action.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="revolver_single_action.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CentreFire.cpp">
@@ -147,6 +150,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="garand_action.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="revolver_single_action.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
