@@ -1,8 +1,7 @@
 #pragma once
 #include "receiver.h"
 class break_action :
-	public receiver,
-	public loadable<cartridge> {
+	public receiver {
 public:
 	break_action(const case_type &);
 	instance clone() const;

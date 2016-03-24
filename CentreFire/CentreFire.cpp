@@ -90,6 +90,9 @@ int _tmain(int argc, _TCHAR* argv[]) {
 				Rifle.fire();
 			}
 			cout << endl;
+			Revolver->open();
+			Revolver->unloadAll();
+			cout << endl;
 		}
 	} catch (string Error) {
 		cout << "ERROR: " << Error << endl << endl;

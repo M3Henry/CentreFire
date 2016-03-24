@@ -16,7 +16,6 @@ std::string chamber::name() const {
 	return _Type.name() + " Chamber";
 }
 
-
 cartridge::ejecta chamber::strike(float Impulse) {
 	if (loaded()) {
 		return _Cartridge->strike(Impulse);

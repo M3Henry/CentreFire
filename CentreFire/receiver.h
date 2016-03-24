@@ -1,7 +1,9 @@
 #pragma once
 #include "chamber.h"
 
-class receiver : nameable {
+class receiver :
+	nameable,
+	public loadable<cartridge> {
 public:
 	typedef std::unique_ptr<receiver> instance;
 public:
