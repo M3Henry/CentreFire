@@ -1,9 +1,10 @@
 #pragma once
 #include "chamber.h"
-
+#include "openable.h"
 class receiver :
 	nameable,
-	public loadable<cartridge> {
+	public loadable<cartridge>,
+	public openable {
 public:
 	typedef std::unique_ptr<receiver> instance;
 public:

@@ -96,6 +96,7 @@
     <ClInclude Include="magazine_type.h" />
     <ClInclude Include="nameable.h" />
     <ClInclude Include="named.h" />
+    <ClInclude Include="openable.h" />
     <ClInclude Include="primer.h" />
     <ClInclude Include="primer_type.h" />
     <ClInclude Include="propellant_type.h" />
@@ -122,6 +123,7 @@
     <ClCompile Include="magazine.cpp" />
     <ClCompile Include="magazine_type.cpp" />
     <ClCompile Include="named.cpp" />
+    <ClCompile Include="openable.cpp" />
     <ClCompile Include="primer.cpp" />
     <ClCompile Include="primer_type.cpp" />
     <ClCompile Include="propellant_type.cpp" />

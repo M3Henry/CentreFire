@@ -10,6 +10,7 @@
 #include "bolt_action.h"
 #include "garand_action.h"
 #include "revolver_single_action.h"
+#include "openable.h"
 
 int _tmain(int argc, _TCHAR* argv[]) {
 	using namespace std;
@@ -29,9 +30,9 @@ int _tmain(int argc, _TCHAR* argv[]) {
 		bolt_action BolterTemplate(BoxMag);
 		//gun Rifle(BolterTemplate, Barrel, "Karabiner 98 kurz");
 		garand_action GarandTemplate(BoxMag);
-		//gun Rifle(GarandTemplate, Barrel, "M1 Garand");
+		gun Rifle(GarandTemplate, Barrel, "M1 Garand");
 		revolver_single_action RevolverTemplate(*Ammo, 3);
-		gun Rifle(RevolverTemplate, Barrel, "Revolver-Rifle");
+		//gun Rifle(RevolverTemplate, Barrel, "Revolver-Rifle");
 		cout << "Successfully created " << Rifle.name() << " to fire them from." << endl << endl;
 		//	Start
 		if (auto Bolter = Rifle.action<bolt_action>()) {

@@ -10,8 +10,6 @@ public:
 	const revolver_single_action & operator=(revolver_single_action &&) = delete;
 	receiver::instance clone() const;
 public:
-	void open();
-	void close();
 	cartridge::instance load(cartridge::instance);
 	cartridge::instance unload();
 	void unloadAll();
@@ -22,5 +20,4 @@ private:
 	std::vector<chamber::instance> _Cylinder;
 	std::vector<chamber::instance>::iterator _FiringChamber;
 	bool _Cocked;
-	bool _Open;
 };

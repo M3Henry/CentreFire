@@ -10,6 +10,7 @@ public:
 	garand_action garand_action::operator =(const chamber &) = delete;
 	receiver::instance clone() const;
 public:
+	bool open();
 	cartridge::instance load(cartridge::instance);
 private:
 	cartridge::ejecta fire();

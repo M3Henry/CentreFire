@@ -7,7 +7,6 @@ public:
 	instance clone() const;
 public:
 	void open();
-	void close();
 	cartridge::instance load(cartridge::instance);
 	cartridge::instance unload();
 	void cock();
@@ -16,5 +15,4 @@ private:
 private:
 	chamber _Chamber;
 	bool _Cocked;
-	bool _Open;
 };

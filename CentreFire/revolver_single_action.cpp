@@ -2,8 +2,7 @@
 #include <iostream>
 
 revolver_single_action::revolver_single_action(const case_type & CaseType, size_t Size) :
-_Cocked(false),
-_Open(false) {
+_Cocked(false) {
 	_Cylinder.reserve(Size);
 	while (Size--) {
 		_Cylinder.emplace_back(new chamber(CaseType));
@@ -18,14 +17,8 @@ receiver::instance revolver_single_action::clone() const {
 	return instance(new revolver_single_action(*_Cylinder.front(), _Cylinder.size()));
 }
 
-void revolver_single_action::open() {
-	if (!_Open) {
-		_Open = true;
-	}
-}
-
 cartridge::instance revolver_single_action::load(cartridge::instance Cartridge) {
-	if (_Open) {
+	if (isOpen()) {
 		for (auto & Chamber : _Cylinder) {
 			Cartridge = Chamber->load(std::move(Cartridge));
 			if (!Cartridge) {
@@ -36,7 +29,7 @@ cartridge::instance revolver_single_action::load(cartridge::instance Cartridge) 
 	return Cartridge;
 }
 cartridge::instance revolver_single_action::unload() {
-	if (_Open) {
+	if (isOpen()) {
 		for (auto & Chamber : _Cylinder) {
 			if (auto Cartridge = Chamber->unload()) {
 				return Cartridge;
@@ -48,7 +41,7 @@ cartridge::instance revolver_single_action::unload() {
 
 void revolver_single_action::unloadAll() {
 	unsigned int Count = 0;
-	if (!_Open) {
+	if (isClosed()) {
 		return;
 	}
 	for (auto & Chamber : _Cylinder) {
@@ -58,12 +51,6 @@ void revolver_single_action::unloadAll() {
 	}
 	if (Count) {
 		std::cout << Count << " " << ((const case_type &)*_Cylinder.front()).name() << " fell out." << std::endl;
-	}
-}
-
-void revolver_single_action::close() {
-	if (_Open) {
-		_Open = false;
 	}
 }
 
@@ -78,7 +65,7 @@ cartridge::ejecta revolver_single_action::fire() {
 	if (_Cocked) {
 		std::cout << "Click." << std::endl;
 		_Cocked = false;
-		if (!_Open) {
+		if (isClosed()) {
 			return (*_FiringChamber)->strike(5.0f);
 		}
 	}

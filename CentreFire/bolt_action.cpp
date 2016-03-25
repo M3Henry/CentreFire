@@ -9,37 +9,39 @@ receiver::instance bolt_action::clone() const {
 	return instance(new bolt_action(_Magazine));
 }
 
-void bolt_action::open() {
-	if (!_Open) {
-		_Open = true;
+bool bolt_action::open() {
+	auto Changed = openable::open();
+	if (Changed) {
 		if (auto Cartridge = _Chamber.unload()) {
 			std::cout << "A " << Cartridge->contents() << " flew out." << std::endl;
 		}
 	}
+	return Changed;
+}
+bool bolt_action::close() {
+	auto Changed = openable::close();
+	if (Changed) {
+		_Cocked = true;
+		_Chamber.load(_Magazine.unload());
+	}
+	return Changed;
 }
 cartridge::instance bolt_action::load(cartridge::instance Cartridge) {
-	if (_Open) {
+	if (isOpen()) {
 		return _Magazine.load(std::move(Cartridge));
 	} else {
 		return cartridge::instance();
 	}
 }
 cartridge::instance bolt_action::unload() {
-	if (_Open) {
+	if (isOpen()) {
 		return _Magazine.unload();
 	} else {
 		return cartridge::instance();
 	}
 }
-void bolt_action::close() {
-	if (_Open) {
-		_Open = false;
-		_Cocked = true;
-		_Chamber.load(_Magazine.unload());
-	}
-}
 cartridge::ejecta bolt_action::fire() {
-	if (_Cocked && !_Open) {
+	if (_Cocked && isClosed()) {
 		_Cocked = false;
 		std::cout << "Click." << std::endl;
 		return _Chamber.strike(5.0f);

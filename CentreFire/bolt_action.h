@@ -9,15 +9,14 @@ public:
 	bolt_action bolt_action::operator =(const chamber &) = delete;
 	receiver::instance clone() const;
 public:
-	void open();
+	bool open();
+	bool close();
 	cartridge::instance load(cartridge::instance);
 	cartridge::instance unload();
-	void close();
 protected:
 	cartridge::ejecta fire();
 protected:
 	chamber _Chamber;
 	magazine _Magazine;
-	bool _Open;
 	bool _Cocked;
 };

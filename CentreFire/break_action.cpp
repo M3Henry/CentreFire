@@ -3,7 +3,7 @@
 #include <iostream>
 
 break_action::break_action(const case_type & Chamber) :
-_Chamber(Chamber), _Cocked(false), _Open(false) {
+_Chamber(Chamber), _Cocked(false) {
 }
 receiver::instance break_action::clone() const {
 	auto p = new break_action(_Chamber);
@@ -11,22 +11,20 @@ receiver::instance break_action::clone() const {
 }
 
 void break_action::open() {
-	_Open = true;
-	if (auto Cartridge = unload()) {
-		std::cout << "A " << Cartridge->contents() << " flew out." << std::endl;
+	if (openable::open()) {
+		if (auto Cartridge = unload()) {
+			std::cout << "A " << Cartridge->contents() << " flew out." << std::endl;
+		}
 	}
 }
-void break_action::close() {
-	_Open = false;
-}
 cartridge::instance break_action::load(cartridge::instance Cartridge) {
-	if (_Open) {
+	if (isOpen()) {
 		return _Chamber.load(std::move(Cartridge));
 	}
 	return Cartridge;
 }
 cartridge::instance break_action::unload() {
-	if (_Open) {
+	if (isOpen()) {
 		return _Chamber.unload();
 	} else {
 		return cartridge::instance();
@@ -40,7 +38,7 @@ cartridge::ejecta break_action::fire() {
 	if (_Cocked) {
 		std::cout << "Click." << std::endl;
 		_Cocked = false;
-		if (!_Open) {
+		if (isClosed()) {
 			return _Chamber.strike(5.0f);
 		}
 	}
